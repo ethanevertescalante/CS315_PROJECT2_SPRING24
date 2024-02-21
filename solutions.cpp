@@ -23,3 +23,44 @@ int numNodesAtTheTopLevel(list p) {
 }
 
 
+bool is_lat(list p){
+    if(is_null(p)){
+        return true;
+    }
+
+    if(!is_atom(car(p))){
+        return false;
+    }
+
+    return is_lat(cdr(p));
+
+}
+
+/*
+ * TODO: fix member() function, does not work when p is in q sublist ex:(((b) a) c d)
+ *
+ */
+
+bool member(list p, list q){
+    //p is an atom
+    //q is a non-atomic list
+    if(is_null(q)){
+        return false;
+    }
+    if(!is_atom(p)){
+        return false;
+    }
+    if(eq(p, car(q)))
+    {
+        return true;
+    }
+    if(!is_null(car(q)) && !is_atom(car(q))){
+
+        return member(p, car(q));
+    }
+
+
+    return member(p, cdr(q));
+
+
+}
