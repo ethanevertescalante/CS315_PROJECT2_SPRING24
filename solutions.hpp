@@ -5,7 +5,7 @@
 #include"reclists.hpp"
 
 int numNodesAtTheTopLevel(list p);
-
+list append(list p, list q);
 //additions for Project 2
 
 bool is_lat(list p);
@@ -28,7 +28,14 @@ or just bomb out.)
 
  */
 
+list last(list p);
+/*
+last returns the last element, ln, of a non-atomic, non-empty list. (Do this without using
+reverse.) Note that last of (a b c) is c, not (c)
 
+ */
+
+list list_pair(list p , list q);
 
 
 

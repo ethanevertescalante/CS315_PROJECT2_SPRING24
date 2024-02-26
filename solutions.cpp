@@ -22,6 +22,19 @@ int numNodesAtTheTopLevel(list p) {
     return 1 + numNodesAtTheTopLevel(cdr(p));
 }
 
+/*
+ * TODO: append is not grabbing the first two atoms in the list p, fix it
+ */
+
+list append(list p, list q){
+    if(is_null(cdr(p))){
+    return cons(car(p),q);
+    }
+    return append(cdr(p), q);
+}
+
+
+
 
 bool is_lat(list p){
     if(is_null(p)){
@@ -64,3 +77,28 @@ bool member(list p, list q){
 
 
 }
+
+list last(list p){
+
+    if(is_null(cdr(p))){
+        return car(p);
+    }
+
+    return last(cdr(p));
+
+}
+
+list list_pair(list p , list q){
+    //p and q are both lists of atoms
+    if(is_null(p) ){
+       return null();
+    }
+
+
+    return car(p), car(q), list_pair(cdr(p), cdr(q));
+
+
+}
+
+
+

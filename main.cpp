@@ -17,5 +17,16 @@ int main()
     //std::cout << "is_lat test q: " << is_lat(q) << std::endl;
     std::cout << "member test: " << member(p,q) << std::endl;
 
+    std::cout << "append test:";
+    write_list(append(p,q));
+    std::cout << std::endl;
+
+    std::cout  << "last test: ";
+    write_list(last(p));
+    std::cout << std::endl;
+
+    std:: cout << "list_pair test:";
+    write_list(list_pair(p,q));
+    std::cout << std::endl;
     return 0;
 }
