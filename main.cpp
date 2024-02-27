@@ -7,6 +7,7 @@ int main()
 
     std::cout << "Enter a list p: ";
     list p = read_list();
+
     std::cout << "Enter a list q: ";
     list q = read_list();
     std::cout << "Echoing the list that you entered below." << std::endl;
@@ -28,5 +29,17 @@ int main()
     std:: cout << "list_pair test:";
     write_list(list_pair(p,q));
     std::cout << std::endl;
+
+    std:: cout << "firsts test:";
+    write_list(firsts(p));
+    std::cout << std::endl;
+
+
+
+
+
+
+
+
     return 0;
 }

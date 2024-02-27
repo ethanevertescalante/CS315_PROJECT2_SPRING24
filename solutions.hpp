@@ -36,10 +36,15 @@ reverse.) Note that last of (a b c) is c, not (c)
  */
 
 list list_pair(list p , list q);
+/*
+list_pair takes two lists of atoms of the same length (you may check for an error if you
+like—or just bomb out) and returns a list that consists of lists of two atoms each, which
+are the corresponding atoms paired up. For example:
+list_pair( (a b c),(d e f) ) = ( (a d) (b e) (c f) )
 
+ */
 
-
-
+list firsts(list p);
 
 
 

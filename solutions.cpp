@@ -1,5 +1,6 @@
 #include "reclists.hpp"
 #include "solutions.hpp"
+#include <cassert>
 
 // As you implement functions in this file, you should add the
 // function-prototype to the solutions.hpp. The function-prototypes
@@ -26,11 +27,10 @@ int numNodesAtTheTopLevel(list p) {
 list append(list p, list q){
     if(is_null(p)) {
         return q;
-    }else if (is_null(cdr(p))){
-        return cons(car(p), q);
-    }else{
-        return cons(car(p), append(cdr(p), q));
     }
+
+    return cons(car(p), append(cdr(p), q));
+
 }
 
 
@@ -90,10 +90,30 @@ list last(list p){
 
 list list_pair(list p , list q){
     //p and q are both lists of atoms
+    assert(!is_atom(p));
+    if(is_null(p)){
+        return null();
+    }
 
+
+    return cons (cons(car(p), cons(car(q), null())), list_pair(cdr(p), cdr(q)));
+    //list_pair(cdr(p), cdr(q)) : grabs the next two elements to match up
+
+    //cons(car(p), cons(car(q), null()) : grabs the first element in list p
+    //and pairs it up with the first element in list q
+
+    //note: cons(car(q), null()) == ([atom in q])
+    // so cons( [atom in p], [atom in q] )
 
 
 }
 
+list firsts(list p){
+    if(is_null(p)){
+        return null();
+    }
 
 
+    return cons(car(p), null());
+
+}
