@@ -121,11 +121,13 @@ firsts takes as an argument a list whose elements are lists of atoms and returns
 which contains the first element from each of the lists. For example:
 firsts( ( (a b c) (d e f) (c d b a) ) ) = ( a d c )
  */
+
     if (is_null(p)) {
         return null();
     }else if(is_atom(car(p))){
         return cons(car(p), firsts(cdr(p)));
     }
+
 
     return cons(car(car(p)), firsts(cdr(p)))    ;
 
