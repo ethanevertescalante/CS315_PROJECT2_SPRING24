@@ -89,7 +89,14 @@ list last(list p){
 }
 
 list list_pair(list p , list q){
-    //p and q are both lists of atoms
+/*
+list_pair takes two lists of atoms of the same length (you may check for an error if you
+like—or just bomb out) and returns a list that consists of lists of two atoms each, which
+are the corresponding atoms paired up. For example:
+list_pair( (a b c),(d e f) ) = ( (a d) (b e) (c f) )
+ */
+
+
     assert(!is_atom(p));
     if(is_null(p)){
         return null();
@@ -109,11 +116,40 @@ list list_pair(list p , list q){
 }
 
 list firsts(list p){
-    if(is_null(p)){
+/*
+firsts takes as an argument a list whose elements are lists of atoms and returns a list
+which contains the first element from each of the lists. For example:
+firsts( ( (a b c) (d e f) (c d b a) ) ) = ( a d c )
+ */
+    if (is_null(p)) {
         return null();
+    }else if(is_atom(car(p))){
+        return cons(car(p), firsts(cdr(p)));
+    }
+
+    return cons(car(car(p)), firsts(cdr(p)))    ;
+
+}
+list flat(list p) {
+    /*
+flat takes a non-atomic list and returns a list which is the original list with the parenthesis
+     removed (except for the outer set). For the lists in (3) of the definition, flat yields
+        (a b)
+        (c)
+        (a b c d e)
+        (a b c b)
+*/
+    if (is_null(p)) {
+        return null();
+    }
+    else if (is_atom(p)) {
+        return cons(p, null());
+    }
+    else {
+        return cons(car(p), flat(cdr(p)));
     }
 
 
-    return cons(car(p), null());
+
 
 }

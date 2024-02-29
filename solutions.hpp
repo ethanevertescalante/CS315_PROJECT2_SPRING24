@@ -46,6 +46,15 @@ list_pair( (a b c),(d e f) ) = ( (a d) (b e) (c f) )
 
 list firsts(list p);
 
+list flat(list p) ;
+    /*
+flat takes a non-atomic list and returns a list which is the original list with the parenthesis
+     removed (except for the outer set). For the lists in (3) of the definition, flat yields
+        (a b)
+        (c)
+        (a b c d e)
+        (a b c b)
+*/
 
 
 

@@ -27,14 +27,16 @@ int main()
     std::cout << std::endl;
 
     std:: cout << "list_pair test:";
-    write_list(list_pair(p,q));
+   // write_list(list_pair(p,q));
     std::cout << std::endl;
 
     std:: cout << "firsts test:";
     write_list(firsts(p));
     std::cout << std::endl;
 
-
+    std:: cout << "flat test:";
+    //write_list(flat(p));
+    std::cout << std::endl;
 
 
 
