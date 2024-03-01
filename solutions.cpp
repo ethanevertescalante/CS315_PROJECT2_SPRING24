@@ -213,7 +213,10 @@ reverse that reverses the list and each sub-list, recursively, unto the nth gene
         return null();
     }
 
+    //TODO: outer swap will occur, but inner swap will not occur, figure it out
 
+
+    return append(total_reverse(cdr(p)), cons(car(p), null()));
 
 
 
