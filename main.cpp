@@ -18,12 +18,16 @@ int main()
     //std::cout << "is_lat test q: " << is_lat(q) << std::endl;
     std::cout << "member test: " << member(p,q) << std::endl;
 
+    std::cout << "top reverse test: ";
+    write_list(reverse(p));
+    std::cout << std::endl;
+
     std::cout << "append test:";
-    write_list(append(p,q));
+    //write_list(append(p,q));
     std::cout << std::endl;
 
     std::cout  << "last test: ";
-    write_list(last(p));
+    //write_list(last(p));
     std::cout << std::endl;
 
     std:: cout << "list_pair test:";
@@ -31,17 +35,24 @@ int main()
     std::cout << std::endl;
 
     std:: cout << "firsts test:";
-    write_list(firsts(p));
+    //write_list(firsts(p));
     std::cout << std::endl;
 
     std:: cout << "flat test:";
     //write_list(flat(p));
     std::cout << std::endl;
 
+    std:: cout << "two_the_same test:";
+    //std::cout << two_the_same(p,q);
+    std::cout << std::endl;
 
+    std:: cout << "equal test:";
+    std::cout << equal(p,q);
+    std::cout << std::endl;
 
-
-
+    std:: cout << "total_reverse test:";
+    write_list(total_reverse(p));
+    std::cout << std::endl;
 
     return 0;
 }

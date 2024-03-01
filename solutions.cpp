@@ -33,6 +33,12 @@ list append(list p, list q){
 
 }
 
+list reverse(list p) {
+// Reverses the nodes of p at the top level.
+    if( is_null(p) )
+        return null();
+    return append( reverse( cdr(p) ), cons( car(p), null() ) );
+}
 
 
 
@@ -129,9 +135,10 @@ firsts( ( (a b c) (d e f) (c d b a) ) ) = ( a d c )
     }
 
 
-    return cons(car(car(p)), firsts(cdr(p)))    ;
+    return cons(car(car(p)), firsts(cdr(p)));
 
 }
+// TODO: flat(list p) still needs some work
 list flat(list p) {
     /*
 flat takes a non-atomic list and returns a list which is the original list with the parenthesis
@@ -141,15 +148,74 @@ flat takes a non-atomic list and returns a list which is the original list with 
         (a b c d e)
         (a b c b)
 */
-    if (is_null(p)) {
+    if(is_null(p)){
         return null();
     }
+
+
+}
+
+bool two_the_same(list p, list q){
+/*
+two_the_same takes two non-atomic recursive lists and returns true if p and q contain at
+least one atom in common.
+
+ */
+
+    if (is_null(p) || is_null(q)) {
+        return false;
+    }
+    else if (is_atom(p) && is_atom(q)) {
+        return eq(p, q);
+    }
     else if (is_atom(p)) {
-        return cons(p, null());
+        return two_the_same(p, car(q)) || two_the_same(p, cdr(q));
     }
-    else {
-        return cons(car(p), flat(cdr(p)));
+    else if (is_atom(q)) {
+        return two_the_same(q, car(p)) || two_the_same(q, cdr(p));
     }
+
+    return two_the_same(car(p), q) || two_the_same(cdr(p), q);
+
+}
+
+
+bool equal(list p, list q) {
+/*
+equal takes two arbitrary recursive lists and determines if they are identical, that is the
+ parentheses are all in the same place and the atoms agree as to place and name. This is
+an extension of eq
+*/
+    if(is_null(p) && is_null(q)){
+        return true;
+    }else if(is_atom(p) && is_atom(q)){
+        if(eq(p,q)){
+            return true;
+        }
+        return false;
+    }else if((!is_null(p) && !is_null(q)) && (!is_atom(p) && !is_atom(q))){
+        return equal(car(p), car(q)) && equal(cdr(p), cdr(q));
+    }
+
+    return false;
+
+
+
+
+}
+
+list total_reverse(list p){
+/*
+This function takes a recursive list and returns its mirror image. It is the extension of
+reverse that reverses the list and each sub-list, recursively, unto the nth generation.
+ */
+    if(is_null(p)){
+        return null();
+    }
+
+
+
+
 
 
 

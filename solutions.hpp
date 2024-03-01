@@ -6,6 +6,8 @@
 
 int numNodesAtTheTopLevel(list p);
 list append(list p, list q);
+list reverse(list p);
+
 //additions for Project 2
 
 bool is_lat(list p);
@@ -45,6 +47,11 @@ list_pair( (a b c),(d e f) ) = ( (a d) (b e) (c f) )
  */
 
 list firsts(list p);
+/*
+firsts takes as an argument a list whose elements are lists of atoms and returns a list
+which contains the first element from each of the lists. For example:
+firsts( ( (a b c) (d e f) (c d b a) ) ) = ( a d c )
+ */
 
 list flat(list p) ;
     /*
@@ -56,6 +63,25 @@ flat takes a non-atomic list and returns a list which is the original list with 
         (a b c b)
 */
 
+    bool two_the_same(list p, list q);
+/*
+two_the_same takes two non-atomic recursive lists and returns true if p and q contain at
+least one atom in common.
+
+ */
+
+bool equal(list p, list q);
+    /*
+equal takes two arbitrary recursive lists and determines if they are identical, that is the
+     parentheses are all in the same place and the atoms agree as to place and name. This is
+an extension of eq
+*/
+
+    list total_reverse(list p);
+/*
+This function takes a recursive list and returns its mirror image. It is the extension of
+reverse that reverses the list and each sub-list, recursively, unto the nth generation.
+ */
 
 
 
