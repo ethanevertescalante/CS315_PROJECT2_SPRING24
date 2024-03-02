@@ -83,6 +83,26 @@ This function takes a recursive list and returns its mirror image. It is the ext
 reverse that reverses the list and each sub-list, recursively, unto the nth generation.
  */
 
+list shape(list p);
+/*
+shape takes a non-atomic recursive list and returns a recursive list that consists of only
+        the parentheses in the original.
+*/
+
+list intersection(list p, list q);
+/*
+Each of p and q is a list of atoms and the atoms are distinct. That is, no atom appears in
+        p or q more than once (they represent sets.) intersection forms their intersection, a list
+        that contains atoms that are in both, p and q. (The empty list represents the empty set.)
+*/
+
+list list_union(list p, list q);
+/*
+Each of p and q is a list of atoms and the atoms are distinct. That is, no atom appears in
+        p or q more than once (they represent sets.) list_union builds and returns their union
+— a list that contains the atoms in p and q, without repitition. That is, if p and q have
+        an atom in common then this atom should only appear once in the union.
+*/
 
 
 #endif

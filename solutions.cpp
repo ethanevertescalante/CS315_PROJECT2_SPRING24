@@ -179,7 +179,7 @@ least one atom in common.
 
 }
 
-
+//TODO: find a solution to equal
 bool equal(list p, list q) {
 /*
 equal takes two arbitrary recursive lists and determines if they are identical, that is the
@@ -213,16 +213,78 @@ reverse that reverses the list and each sub-list, recursively, unto the nth gene
         return null();
     }
 
-    //TODO: outer swap will occur, but inner swap will not occur, figure it out
-    if(!is_atom(car(p)) && !is_null(car(p))){
-        return append(total_reverse(car(p)), cons(cdr(p),null()));
+    if(!is_atom(car(p))){
+        return append(total_reverse(cdr(p)),cons(total_reverse(car(p)), null()));
     }
 
     return append(total_reverse(cdr(p)), cons(car(p), null()));
 
+}
 
+
+list shape(list p) {
+/*
+shape takes a non-atomic recursive list and returns a recursive list that consists of only
+        the parentheses in the original.
+*/
+    if(is_null(p)){
+        return null();
+    }
+
+    if(is_atom(car(p))){
+        return shape(cdr(p));
+    }
+    //if(!is_atom(cdr(p)) && !is_null(cdr(p))){
+      //  return shape(cdr(p));
+    //}
+
+
+    return cons(shape(car(p)), shape(cdr(p)));
+
+
+}
+
+list intersection(list p, list q) {
+/*
+Each of p and q is a list of atoms and the atoms are distinct. That is, no atom appears in
+        p or q more than once (they represent sets.) intersection forms their intersection, a list
+        that contains atoms that are in both, p and q. (The empty list represents the empty set.)
+*/
+    if (is_null(p)) {
+        return null();
+    }
+
+    if (is_atom(car(p))) {
+        if (is_null(q)) {
+            return null();
+        } else {
+            if (eq(car(p), car(q))) {
+                return cons(car(p), intersection(cdr(p), q));
+            } else {
+                return intersection(p, cdr(q));
+            }
+        }
+    }
+
+    return intersection(car(p), q);
+
+}
+
+
+
+
+
+
+list list_union(list p, list q) {
+/*
+Each of p and q is a list of atoms and the atoms are distinct. That is, no atom appears in
+        p or q more than once (they represent sets.) list_union builds and returns their union
+— a list that contains the atoms in p and q, without repitition. That is, if p and q have
+        an atom in common then this atom should only appear once in the union.
+*/
 
 
 
 
 }
+

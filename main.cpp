@@ -54,5 +54,15 @@ int main()
     write_list(total_reverse(p));
     std::cout << std::endl;
 
+
+    std:: cout << "shape test:";
+    write_list(shape(p));
+    std::cout << std::endl;
+
+    std:: cout << "intersection test:";
+    write_list(intersection(p,q));
+    std::cout << std::endl;
+
+
     return 0;
 }
