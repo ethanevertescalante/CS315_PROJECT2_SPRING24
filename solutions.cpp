@@ -214,7 +214,9 @@ reverse that reverses the list and each sub-list, recursively, unto the nth gene
     }
 
     //TODO: outer swap will occur, but inner swap will not occur, figure it out
-
+    if(!is_atom(car(p)) && !is_null(car(p))){
+        return append(total_reverse(car(p)), cons(cdr(p),null()));
+    }
 
     return append(total_reverse(cdr(p)), cons(car(p), null()));
 
