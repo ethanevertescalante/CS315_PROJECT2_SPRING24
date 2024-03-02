@@ -179,7 +179,7 @@ least one atom in common.
 
 }
 
-//TODO: find a solution to equal
+
 bool equal(list p, list q) {
 /*
 equal takes two arbitrary recursive lists and determines if they are identical, that is the
@@ -244,6 +244,7 @@ shape takes a non-atomic recursive list and returns a recursive list that consis
 
 }
 
+//TODO: find a solution to intersection, then union
 list intersection(list p, list q) {
 /*
 Each of p and q is a list of atoms and the atoms are distinct. That is, no atom appears in
