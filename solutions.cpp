@@ -55,10 +55,6 @@ bool is_lat(list p){
 
 }
 
-/*
- * TODO: fix member() function, does not work when p is in q sublist ex:(((b) a) c d)
- *
- */
 
 bool member(list p, list q){
     //p is an atom
@@ -66,20 +62,16 @@ bool member(list p, list q){
     if(is_null(q)){
         return false;
     }
-    if(!is_atom(p)){
-        return false;
-    }
-    if(eq(p, car(q)))
-    {
-        return true;
-    }
-    if(!is_null(car(q)) && !is_atom(car(q))){
+    if(is_atom(car(q))) {
+        if (eq(p, car(q))) {
+            return true;
+        }
 
-        return member(p, car(q));
+        return member(p, cdr(q));
     }
 
 
-    return member(p, cdr(q));
+    return member(p, cdr(q)) || member(p, car(q));
 
 
 }
@@ -137,7 +129,7 @@ firsts( ( (a b c) (d e f) (c d b a) ) ) = ( a d c )
     return cons(car(car(p)), firsts(cdr(p)));
 
 }
-// TODO: flat(list p) still needs some work
+
 list flat(list p) {
     /*
 flat takes a non-atomic list and returns a list which is the original list with the parenthesis
@@ -150,6 +142,11 @@ flat takes a non-atomic list and returns a list which is the original list with 
     if(is_null(p)){
         return null();
     }
+    if(is_atom(car(p))){
+     return cons(car(p), flat(cdr(p)));
+    }
+
+    return append(flat(car(p)), flat(cdr(p)));
 
 
 }
@@ -243,7 +240,7 @@ shape takes a non-atomic recursive list and returns a recursive list that consis
 
 }
 
-//TODO: will only work one way
+
 list intersection(list p, list q) {
 /*
 Each of p and q is a list of atoms and the atoms are distinct. That is, no atom appears in
@@ -251,15 +248,23 @@ Each of p and q is a list of atoms and the atoms are distinct. That is, no atom 
         that contains atoms that are in both, p and q. (The empty list represents the empty set.)
 */
 
+/*
+you may only use the functions
+that are listed under ADT Recursive list, append , and member . - reclists.pdf from Canvas
+ */
+
+//FUTURE ETHAN: PAST ETHAN PLEASE READ THE INSTRUCTIONS MORE CAREFULLY, YOU CAN USE MEMBER()!
+//THAT WOULD HAVE SAVED YOU A LOT OF TIME AND HAIR!
+
    if(is_null(p) || is_null(q)){
        return  null();
    }
 
-   if(eq(car(p), car(q))){
-       return  cons(car(p), intersection(cdr(p) , cdr(q)));
+   if(member(car(p),q)){
+       return  cons(car(p), intersection(cdr(p) , q));
    }
 
-    return intersection(p, cdr(q));
+    return intersection(cdr(p), q);
 
 
 }
@@ -273,19 +278,20 @@ Each of p and q is a list of atoms and the atoms are distinct. That is, no atom 
 — a list that contains the atoms in p and q, without repitition. That is, if p and q have
         an atom in common then this atom should only appear once in the union.
 */
+
+//FUTURE ETHAN: PAST ETHAN PLEASE READ THE INSTRUCTIONS MORE CAREFULLY, YOU CAN USE MEMBER()!
+//THAT WOULD HAVE SAVED YOU A LOT OF TIME AND HAIR!
+
     if (is_null(p))
         return q;
     if (is_null(q))
         return p;
 
-    if (eq(car(p), car(q)))
-        return cons(car(p), list_union(cdr(p), cdr(q)));
+   if(member(car(p),q)){
+       return list_union(cdr(p),q);
+   }
 
-    if (eq(car(p), cdr(q)))
-        return cons(car(p), list_union(cdr(p), q));
-
-    return cons(car(q), list_union(p, cdr(q)));
-
+   return cons(car(p), list_union(cdr(p),q));
 
 }
 
