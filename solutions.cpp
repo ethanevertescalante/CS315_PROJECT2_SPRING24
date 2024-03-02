@@ -102,7 +102,6 @@ are the corresponding atoms paired up. For example:
 list_pair( (a b c),(d e f) ) = ( (a d) (b e) (c f) )
  */
 
-
     assert(!is_atom(p));
     if(is_null(p)){
         return null();
@@ -244,35 +243,26 @@ shape takes a non-atomic recursive list and returns a recursive list that consis
 
 }
 
-//TODO: find a solution to intersection, then union
+//TODO: will only work one way
 list intersection(list p, list q) {
 /*
 Each of p and q is a list of atoms and the atoms are distinct. That is, no atom appears in
         p or q more than once (they represent sets.) intersection forms their intersection, a list
         that contains atoms that are in both, p and q. (The empty list represents the empty set.)
 */
-    if (is_null(p)) {
-        return null();
-    }
 
-    if (is_atom(car(p))) {
-        if (is_null(q)) {
-            return null();
-        } else {
-            if (eq(car(p), car(q))) {
-                return cons(car(p), intersection(cdr(p), q));
-            } else {
-                return intersection(p, cdr(q));
-            }
-        }
-    }
+   if(is_null(p) || is_null(q)){
+       return  null();
+   }
 
-    return intersection(car(p), q);
+   if(eq(car(p), car(q))){
+       return  cons(car(p), intersection(cdr(p) , cdr(q)));
+   }
+
+    return intersection(p, cdr(q));
+
 
 }
-
-
-
 
 
 
@@ -283,8 +273,18 @@ Each of p and q is a list of atoms and the atoms are distinct. That is, no atom 
 — a list that contains the atoms in p and q, without repitition. That is, if p and q have
         an atom in common then this atom should only appear once in the union.
 */
+    if (is_null(p))
+        return q;
+    if (is_null(q))
+        return p;
 
+    if (eq(car(p), car(q)))
+        return cons(car(p), list_union(cdr(p), cdr(q)));
 
+    if (eq(car(p), cdr(q)))
+        return cons(car(p), list_union(cdr(p), q));
+
+    return cons(car(q), list_union(p, cdr(q)));
 
 
 }

@@ -63,6 +63,9 @@ int main()
     write_list(intersection(p,q));
     std::cout << std::endl;
 
+    std:: cout << "list_union test:";
+    write_list(list_union(p,q));
+    std::cout << std::endl;
 
     return 0;
 }
