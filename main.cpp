@@ -21,7 +21,7 @@ void list_Union_Test();
 int main()
 {
 
-
+    //initial list
     std::cout << "Enter a list p: ";
     list p = read_list();
     std::cout << "Echoing the list that you entered below." << std::endl;
@@ -30,26 +30,18 @@ int main()
     std::cout << std::endl;
 
     //function tests
-    //is_lat_test();
-    //memberTest();
-    //lastTest();
-    //last_pair_Test();
-    //firstTest();
+    is_lat_test();
+    memberTest();
+    lastTest();
+    last_pair_Test();
+    firstTest();
     flatTest();
-    //two_are_same_Test();
-    //equalTest();
-    //totalReverseTest();
-    //shapeTest();
-    //intersectionTest();
-    //list_Union_Test();
-
-
-
-
-
-
-
-
+    two_are_same_Test();
+    equalTest();
+    totalReverseTest();
+    shapeTest();
+    intersectionTest();
+    list_Union_Test();
 
 
     return 0;

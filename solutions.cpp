@@ -1,6 +1,5 @@
 #include "reclists.hpp"
 #include "solutions.hpp"
-#include <cassert>
 
 // As you implement functions in this file, you should add the
 // function-prototype to the solutions.hpp. The function-prototypes
@@ -16,6 +15,8 @@ int numNodesAtTheTopLevel(list p) {
     // The function returns the number of nodes at the top-level
     // of p.
 
+    //given function
+
     if( is_null(p) )
         return 0;
     if( is_atom(p) )
@@ -25,6 +26,7 @@ int numNodesAtTheTopLevel(list p) {
 
 
 list append(list p, list q){
+    //given function
     if(is_null(p)) {
         return q;
     }
@@ -34,7 +36,7 @@ list append(list p, list q){
 }
 
 list reverse(list p) {
-// Reverses the nodes of p at the top level.
+    //given function
     if( is_null(p) )
         return null();
     return append( reverse( cdr(p) ), cons( car(p), null() ) );
@@ -43,6 +45,16 @@ list reverse(list p) {
 
 
 bool is_lat(list p){
+    /*
+is_lat takes a non-atomic (a list that is not an atom) list and returns true if the list is a
+list (potentially empty) of atoms. (It can bomb out if p is an atom, or you may check for
+errors and report them if you prefer.)
+
+For example
+is_lat( (a b c) ) = true
+is_lat( (a (b) c) ) = false
+
+ */
     if(is_null(p)){
         return true;
     }
@@ -57,8 +69,13 @@ bool is_lat(list p){
 
 
 bool member(list p, list q){
-    //p is an atom
-    //q is a non-atomic list
+    /*
+p is an atom and q is an non-atomic list. member returns true if p appears anywhere in q.
+(If p is not an atom or q is not a non-atomic list, the call is in error—you may detect this
+or just bomb out.)
+
+ */
+
     if(is_null(q)){
         return false;
     }
@@ -77,7 +94,11 @@ bool member(list p, list q){
 }
 
 list last(list p){
+/*
+last returns the last element, ln, of a non-atomic, non-empty list. (Do this without using
+reverse.) Note that last of (a b c) is c, not (c)
 
+ */
     if(is_null(cdr(p))){
         return car(p);
     }
@@ -94,7 +115,6 @@ are the corresponding atoms paired up. For example:
 list_pair( (a b c),(d e f) ) = ( (a d) (b e) (c f) )
  */
 
-    assert(!is_atom(p));
     if(is_null(p)){
         return null();
     }

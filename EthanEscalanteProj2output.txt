@@ -1,0 +1,57 @@
+Enter a list p: (a bn)
+Echoing the list that you entered below.
+ ( a bn )
+The number of nodes at the top level of the input list is: 2
+IS_LAT TEST:
+Enter a non-atomic list: (a (b) c)
+0
+MEMBER TEST: 
+Enter an atom: a
+Enter a non-atomic list: (((a) b) c )
+1
+LAST TEST: 
+Enter a non-atomic, non-empty list: (a b (c d))
+ ( c d )
+
+LIST_PAIR TEST (Same Length): 
+Enter list of atom 1: (a b c d)
+Enter list of atom 2: (a b c y)
+ ( ( a a ) ( b b ) ( c c ) ( d y ) )
+
+FIRST TEST: 
+Enter list(list of atoms): ( (a y x) (u r p) ) 
+ ( a u )
+
+FLAT TEST: 
+Enter non-atomic list: ( ((a) b) (((g) d) s))
+ ( a b g d
+   s )
+
+TWO_THE_SAME TEST: 
+Enter list 1 (non-atomic): (a (d (g)) r)
+Enter list 2 (non-atomic): ( (d t (y)) x) 
+1
+EQUAL TEST:
+Enter list 1: (a (b ((c)) ) )
+Enter list 2: (a (b ((c)) ) )
+1
+TOTAL REVERSE TEST:
+Enter non-atomic list: ( (b i) h x y ( ( (x) s d) ) )
+ ( ( ( d s ( x ) ) ) y x h ( i b ) )
+
+SHAPE TEST:
+Enter non-atomic list: ( (d f ((c)) (h w) )
+)
+ ( ( ( () ) () ) )
+
+INTERSECTION TEST:
+Enter list of atoms 1: (a b c d)
+Enter list of atoms 2: (w x y a)
+ ( a )
+
+LIST_UNION TEST:
+Enter list of atoms 1: (a c d w)
+Enter list of atoms 2: (c d y)
+ ( a w
+   c d y )
+
